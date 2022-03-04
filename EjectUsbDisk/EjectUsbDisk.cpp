@@ -1,4 +1,4 @@
-// EjectUsbDisk.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
+// EjectUsbDisk.cpp : å®šä¹‰æ§åˆ¶å°åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚
 //
 
 #include "stdafx.h"
@@ -78,6 +78,7 @@ DEVINST GetDrivesDevInstByDiskNumber(long DiskNumber)
 						if ( DiskNumber == (long)sdn.DeviceNumber )
 						{
 							CloseHandle(hDrive);
+							HeapFree(GetProcessHeap(), 0, pspdidd);
 							SetupDiDestroyDeviceInfoList(hDevInfo);
 							return spdd.DevInst;
 						}
